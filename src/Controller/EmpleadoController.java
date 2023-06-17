@@ -6,7 +6,7 @@
  * Profesor: Luis Yovany Romo Portilla
  */
 
-package Controller;
+package Controller; 
 
 
 import Model.Empleado;
