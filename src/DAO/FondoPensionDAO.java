@@ -8,10 +8,11 @@
 
 package DAO;
 
+import Model.FondoPension;
 import java.util.List;
 
 
-public interface FondoPension {
+public interface FondoPensionDAO {
     void agregarFondoPension(FondoPension fondoPension);
     void eliminarFondoPension(FondoPension fondoPension);
     List<FondoPension> obtenerFondosPension();
