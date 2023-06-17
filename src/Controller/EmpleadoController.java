@@ -9,57 +9,35 @@
 package Controller; 
 
 
+import DAO.EmpleadoDAO;
 import Model.Empleado;
-import java.util.ArrayList;
 import java.util.List;
 
 public class EmpleadoController {
-    private List<Empleado> empleados;
+    private EmpleadoDAO empleadoDAO;
 
-    public EmpleadoController() {
-        empleados = new ArrayList<>();
+    public EmpleadoController(EmpleadoDAO empleadoDAO) {
+        this.empleadoDAO = empleadoDAO;
     }
 
     public void agregarEmpleado(Empleado empleado) {
-        empleados.add(empleado);
+        empleadoDAO.agregarEmpleado(empleado);
     }
 
     public void eliminarEmpleado(Empleado empleado) {
-        empleados.remove(empleado);
+        empleadoDAO.eliminarEmpleado(empleado);
     }
 
     public List<Empleado> obtenerEmpleados() {
-        return empleados;
+        return empleadoDAO.obtenerEmpleados();
     }
 
     public Empleado buscarEmpleadoPorIdentificacion(int identificacion) {
-    for (Empleado empleado : empleados) {
-        if (empleado.getIdentificacion() == identificacion) {
-            return empleado;
-        }
-    }
-    return null;
+        return empleadoDAO.buscarEmpleadoPorIdentificacion(identificacion);
     }
 
-
-    public List<Empleado> obtenerEmpleadosSocios() {
-        List<Empleado> empleadosSocios = new ArrayList<>();
-        for (Empleado empleado : empleados) {
-            if (empleado.getTipoTrabajador().equals("Socio")) {
-                empleadosSocios.add(empleado);
-            }
-        }
-        return empleadosSocios;
-    }
-
-    public List<Empleado> obtenerEmpleadosNoSocios() {
-        List<Empleado> empleadosNoSocios = new ArrayList<>();
-        for (Empleado empleado : empleados) {
-            if (empleado.getTipoTrabajador().equals("No socio")) {
-                empleadosNoSocios.add(empleado);
-            }
-        }
-        return empleadosNoSocios;
+    public void actualizarEmpleadoPorIdentificacion(int identificacion, Empleado empleado) {
+        empleadoDAO.actualizarEmpleadoPorIdentificacion(identificacion, empleado);
     }
 
 }
