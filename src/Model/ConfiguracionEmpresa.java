@@ -10,7 +10,7 @@ package Model;
 
 
 public class ConfiguracionEmpresa {
-    private String nit;
+    private double nit;
     private String razonSocial;
     private String telefono;
     private String direccion;
@@ -22,7 +22,7 @@ public class ConfiguracionEmpresa {
     private double auxilioTransporte;
 
     // Constructor
-    public ConfiguracionEmpresa(String nit, String razonSocial, String telefono, String direccion,
+    public ConfiguracionEmpresa(double nit, String razonSocial, String telefono, String direccion,
                                 String representanteLegal, String correoContacto, int arlCodigo,
                                 int cajaCompensacionCodigo, double salarioMinimo, double auxilioTransporte) {
         this.nit = nit;
@@ -38,11 +38,11 @@ public class ConfiguracionEmpresa {
     }
 
     // Métodos getters y setters
-    public String getNit() {
+    public double getNit() {
         return nit;
     }
 
-    public void setNit(String nit) {
+    public void setNit(double nit) {
         this.nit = nit;
     }
 
