@@ -1,17 +1,17 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * @author Oscar David Cuaical 
+ * @author 
+ * Grupo: 01
+ * N° Laboratorio: 04
+ * Profesor: Luis Yovany Romo Portilla
  */
+
 package DAO;
 
 import Model.CajaCompensacion;
 import java.util.List;
 
-/**
- *
- * @author ASUS
- */
+
 public interface CajaCompensacionDAO {
     void guardarCajaCompensacion(CajaCompensacion cajaCompensacion);
     CajaCompensacion buscarCajaCompensacionPorCodigo(int codigo);
