@@ -4,6 +4,7 @@ import Controller.EmpleadoController;
 import DAO.EmpleadoImplementacionDAO;
 import Exceptions.EmpleadoNotFoundException;
 import Model.Empleado;
+import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 
@@ -291,9 +292,12 @@ public class EmpleadoView extends javax.swing.JFrame {
     private void nombrestextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombrestextActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_nombrestextActionPerformed
+    
+    private List<Integer> documentosEmpleados = new ArrayList<>();
 
     private void registrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarActionPerformed
         EmpleadoController empleadoController = new EmpleadoController(new EmpleadoImplementacionDAO());
+        empleadoController.setDocumentosEmpleados(documentosEmpleados);
 
         String identificacionText = identificaciontext.getText().trim();
         String fichaText = fichatext.getText().trim();
@@ -326,13 +330,15 @@ public class EmpleadoView extends javax.swing.JFrame {
                     fppCodigo, null, null, null, tipoTrabajador, tipoSalario, numeroCuentaBancaria);
 
             empleadoController.agregarEmpleado(empleado);
-
+            documentosEmpleados.add(identificacion);
             // Mostrar el empleado agregado en el TextArea
             datostext.append(empleado.toString() + "\n");
             datostext.append("\n-------------------------------\n");
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(this, "Los campos numéricos deben contener valores válidos.", "Error", JOptionPane.ERROR_MESSAGE);
         }
+        System.out.println(documentosEmpleados);
+       
     }//GEN-LAST:event_registrarActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -384,38 +390,12 @@ public class EmpleadoView extends javax.swing.JFrame {
         salariotext.setText("");
         cuentatext.setText("");
     }//GEN-LAST:event_limpiarActionPerformed
-    private void actualizarEmpleado() {
-        String identificacionText = JOptionPane.showInputDialog(this, "Ingrese la identificación del empleado a actualizar:");
-        if (identificacionText != null) {
-            try {
-                int identificacion = Integer.parseInt(identificacionText);
-                Empleado empleado = empleadoController.buscarEmpleadoPorIdentificacion(identificacion);
+   
+    
 
-                if (empleado != null) {
-                    empleado.setApellidos(apellidostext.getText());
-                    empleado.setNombres(nombrestext.getText());
-                    empleado.setDireccion(direcciontext.getText());
-                    empleado.setEpsCodigo(Integer.parseInt(epstext.getText()));
-                    empleado.setFppCodigo(Integer.parseInt(fpptext.getText()));
-                    empleado.setTipoTrabajador(trabajadortext.getText());
-                    empleado.setTipoSalario(salariotext.getText());
-                    empleado.setNumeroCuentaBancaria(Integer.parseInt(cuentatext.getText()));
-
-                    empleadoController.actualizarEmpleadoPorIdentificacion(identificacion, empleado);
-                    mostrarEmpleados();
-                } else {
-                    JOptionPane.showMessageDialog(this, "No se encontró ningún empleado con la identificación proporcionada.", "Empleado no encontrado", JOptionPane.WARNING_MESSAGE);
-                }
-            } catch (NumberFormatException e) {
-                JOptionPane.showMessageDialog(this, "La identificación, el EPS Código, el FPP Código y el Número de Cuenta Bancaria deben ser valores numéricos válidos.", "Error", JOptionPane.ERROR_MESSAGE);
-            } catch (EmpleadoNotFoundException e) {
-                JOptionPane.showMessageDialog(this, "No se encontró ningún empleado con la identificación proporcionada.", "Empleado no encontrado", JOptionPane.WARNING_MESSAGE);
-            }
-        }
-    }
 
     private void actualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actualizarActionPerformed
-        actualizarEmpleado();
+        
     }//GEN-LAST:event_actualizarActionPerformed
 
     /**

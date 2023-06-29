@@ -16,10 +16,17 @@ import java.util.List;
 
 public class EmpleadoController {
     private EmpleadoDAO empleadoDAO;
+    
+    private List<Integer> documentosEmpleados;
 
     public EmpleadoController(EmpleadoDAO empleadoDAO) {
         this.empleadoDAO = empleadoDAO;
     }
+
+    public void setDocumentosEmpleados(List<Integer> documentosEmpleados) {
+        this.documentosEmpleados = documentosEmpleados;
+    }
+    
 
     public void agregarEmpleado(Empleado empleado) {
         empleadoDAO.agregarEmpleado(empleado);
