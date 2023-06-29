@@ -24,11 +24,45 @@ public class Empleado {
     private String tipoSalario;
     private int numeroCuentaBancaria;
 
-    // Constructor
+    
+    public Empleado(int identificacion, int codigo, String apellidos, String nombres, String direccion, 
+            int epsCodigo, int fppCodigo, String fechaNacimiento, String fechaIngreso, 
+            String fechaRetiro, String tipoTrabajador, String tipoSalario, int numeroCuentaBancaria) {
+        
+        this.identificacion = identificacion;
+        this.codigo = codigo;
+        this.apellidos = apellidos;
+        this.nombres = nombres;
+        this.direccion = direccion;
+        this.epsCodigo = epsCodigo;
+        this.fppCodigo = fppCodigo;
+        this.fechaNacimiento = fechaNacimiento;
+        this.fechaIngreso = fechaIngreso;
+        this.fechaRetiro = fechaRetiro;
+        this.tipoTrabajador = tipoTrabajador;
+        this.tipoSalario = tipoSalario;
+        this.numeroCuentaBancaria = numeroCuentaBancaria;
+    }
+    
+    
+    @Override
+    public String toString() {
+        return "Identificación: " + identificacion +
+                "\nCódigo: " + codigo +
+                "\nApellidos: " + apellidos +
+                "\nNombres: " + nombres +
+                "\nDirección: " + direccion +
+                "\nEPS Código: " + epsCodigo +
+                "\nFPP Código: " + fppCodigo +
+                "\nFecha de Nacimiento: " + fechaNacimiento +
+                "\nFecha de Ingreso: " + fechaIngreso +
+                "\nFecha de Retiro: " + fechaRetiro +
+                "\nTipo de Trabajador: " + tipoTrabajador +
+                "\nTipo de Salario: " + tipoSalario +
+                "\nNúmero de Cuenta Bancaria: " + numeroCuentaBancaria;
+    }
 
-    // ... (código del constructor aquí)
-
-    // Métodos getters y setters
+   
     public int getIdentificacion() {
         return identificacion;
     }

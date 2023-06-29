@@ -10,6 +10,7 @@ package Controller;
 
 
 import DAO.EmpleadoDAO;
+import Exceptions.EmpleadoNotFoundException;
 import Model.Empleado;
 import java.util.List;
 
@@ -24,8 +25,8 @@ public class EmpleadoController {
         empleadoDAO.agregarEmpleado(empleado);
     }
 
-    public void eliminarEmpleado(Empleado empleado) {
-        empleadoDAO.eliminarEmpleado(empleado);
+    public void eliminarEmpleado(int identificacion) throws EmpleadoNotFoundException {
+        empleadoDAO.eliminarEmpleado(identificacion);
     }
 
     public List<Empleado> obtenerEmpleados() {
@@ -36,8 +37,8 @@ public class EmpleadoController {
         return empleadoDAO.buscarEmpleadoPorIdentificacion(identificacion);
     }
 
-    public void actualizarEmpleadoPorIdentificacion(int identificacion, Empleado empleado) {
+    public void actualizarEmpleadoPorIdentificacion(int identificacion, Empleado empleado) throws EmpleadoNotFoundException {
         empleadoDAO.actualizarEmpleadoPorIdentificacion(identificacion, empleado);
     }
-
+    
 }

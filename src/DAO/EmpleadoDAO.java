@@ -8,16 +8,16 @@
 
 package DAO;
 
+import Exceptions.EmpleadoNotFoundException;
 import Model.Empleado;
 import java.util.List;
 
 
 public interface EmpleadoDAO {
     void agregarEmpleado(Empleado empleado);
-    void eliminarEmpleado(Empleado empleado);
+    void eliminarEmpleado(int identificacion) throws EmpleadoNotFoundException;
     List<Empleado> obtenerEmpleados();
     Empleado buscarEmpleadoPorIdentificacion(int identificacion);
     void actualizarEmpleadoPorIdentificacion(int identificacion, Empleado empleado);
 
-    
 }
