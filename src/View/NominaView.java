@@ -48,7 +48,9 @@ public class NominaView extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        identificacionText = new javax.swing.JTextField();
+        jLabel10 = new javax.swing.JLabel();
+        toneladas = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -132,40 +134,54 @@ public class NominaView extends javax.swing.JFrame {
 
         jLabel9.setText("Cedula: ");
 
+        jLabel10.setText("Toneladas cosechadas: ");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(55, 55, 55)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 392, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(99, 99, 99)
-                                .addComponent(jCheckBox1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jCheckBox2))
-                            .addComponent(jLabel7))
-                        .addGap(29, 29, 29)
+                                .addGap(55, 55, 55)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGap(99, 99, 99)
+                                        .addComponent(jCheckBox1)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jCheckBox2))
+                                    .addComponent(jLabel7)
+                                    .addComponent(jLabel10))
+                                .addGap(191, 191, 191))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 392, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(40, 40, 40)))
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(procesarbtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(limpiarbtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(volverbtn, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(salirbtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel9))
-                        .addGap(38, 38, 38)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(Apellidostext)
-                            .addComponent(DireccionText)
-                            .addComponent(nombrestext)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 139, Short.MAX_VALUE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(toneladas, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                .addGap(55, 55, 55)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel1)
+                                    .addComponent(jLabel2)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel9))
+                                .addGap(38, 38, 38)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(Apellidostext)
+                                    .addComponent(DireccionText)
+                                    .addComponent(nombrestext)
+                                    .addComponent(identificacionText, javax.swing.GroupLayout.DEFAULT_SIZE, 139, Short.MAX_VALUE))))
                         .addGap(36, 36, 36)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -216,7 +232,8 @@ public class NominaView extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(volverbtn)
                         .addGap(26, 26, 26)
-                        .addComponent(salirbtn))
+                        .addComponent(salirbtn)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -224,15 +241,19 @@ public class NominaView extends javax.swing.JFrame {
                                 .addComponent(jLabel8)
                                 .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jLabel9))
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(3, 3, 3)
+                            .addComponent(identificacionText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel10)
+                            .addComponent(toneladas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jCheckBox1)
                             .addComponent(jLabel7)
                             .addComponent(jCheckBox2))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(38, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(21, 21, 21))))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -276,7 +297,60 @@ public class NominaView extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void procesarbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_procesarbtnActionPerformed
-        
+        // Obtener los valores ingresados por el usuario
+        String nombres = nombrestext.getText();
+        String apellidos = Apellidostext.getText();
+        String direccion = DireccionText.getText();
+        String identificacion = identificacionText.getText();
+        String tipoDeCaña = Tipocañabox.getSelectedItem().toString();
+        String toneladasText = toneladas.getText();
+        int toneladas = Integer.parseInt(toneladasText);
+        // Calcular los devengos
+        double tarifaPorTonelada = 0.0;
+        if (tipoDeCaña.equals("Cruda ordinaria")) {
+            tarifaPorTonelada = 2000000.0;
+        } else if (tipoDeCaña.equals("Quemada ordinaria")) {
+            tarifaPorTonelada = 1000000.0;
+        }
+        double devengos = tarifaPorTonelada * toneladas; // Donde 'toneladas' es la cantidad de toneladas ingresada por el usuario
+
+        // Calcular las deducciones
+        double deduccionesAutomaticas = (devengos * 0.04) * 2; // Salud y Fondo de pensión
+        double deduccionesPorValor = 0.0; // Aquí deberías calcular las deducciones por valor, como el préstamo a empleado
+
+        double totalDeducciones = deduccionesAutomaticas + deduccionesPorValor;
+
+        // Calcular las prestaciones sociales
+        double cesantias = devengos * 0.0833;
+        double interesCesantias = devengos * 0.01;
+        double primas = devengos * 0.0833;
+        double vacaciones = devengos * 0.0417;
+
+        // Mostrar los resultados en el TextArea
+        Campodedatos.setText("");
+        Campodedatos.append("Información del empleado:\n");
+        Campodedatos.append("Nombres: " + nombres + "\n");
+        Campodedatos.append("Apellidos: " + apellidos + "\n");
+        Campodedatos.append("Dirección: " + direccion + "\n");
+        Campodedatos.append("Identificación: " + identificacion + "\n\n");
+
+        Campodedatos.append("Devengos:\n");
+        Campodedatos.append("Tipo de caña: " + tipoDeCaña + "\n");
+        Campodedatos.append("Tarifa por tonelada: " + tarifaPorTonelada + "\n");
+        Campodedatos.append("Toneladas: " + toneladas + "\n");
+        Campodedatos.append("Total devengos: " + devengos + "\n\n");
+
+        Campodedatos.append("Deducciones:\n");
+        Campodedatos.append("Deducciones automáticas (Salud y Fondo de pensión): " + deduccionesAutomaticas + "\n");
+        Campodedatos.append("Deducciones por valor: " + deduccionesPorValor + "\n");
+        Campodedatos.append("Total deducciones: " + totalDeducciones + "\n\n");
+
+        Campodedatos.append("Prestaciones sociales:\n");
+        Campodedatos.append("Cesantías: " + cesantias + "\n");
+        Campodedatos.append("Interés de cesantías: " + interesCesantias + "\n");
+        Campodedatos.append("Primas: " + primas + "\n");
+        Campodedatos.append("Vacaciones: " + vacaciones + "\n");
+
     }//GEN-LAST:event_procesarbtnActionPerformed
 
     /**
@@ -321,9 +395,11 @@ public class NominaView extends javax.swing.JFrame {
     private javax.swing.JTextField DireccionText;
     private javax.swing.JTextField FechacorteText;
     private javax.swing.JComboBox<String> Tipocañabox;
+    private javax.swing.JTextField identificacionText;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JCheckBox jCheckBox2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -335,11 +411,11 @@ public class NominaView extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JButton limpiarbtn;
     private javax.swing.JTextField nombrestext;
     private javax.swing.JButton procesarbtn;
     private javax.swing.JButton salirbtn;
+    private javax.swing.JTextField toneladas;
     private javax.swing.JButton volverbtn;
     // End of variables declaration//GEN-END:variables
 }
