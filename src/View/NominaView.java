@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package View;
 
 /**
@@ -31,7 +27,7 @@ public class NominaView extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        TipocañaText = new javax.swing.JComboBox<>();
+        Tipocañabox = new javax.swing.JComboBox<>();
         jLabel4 = new javax.swing.JLabel();
         nombrestext = new javax.swing.JTextField();
         Apellidostext = new javax.swing.JTextField();
@@ -41,11 +37,18 @@ public class NominaView extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         DiastrabajadosText = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        Campodedatos = new javax.swing.JTextArea();
         procesarbtn = new javax.swing.JButton();
         limpiarbtn = new javax.swing.JButton();
         volverbtn = new javax.swing.JButton();
         salirbtn = new javax.swing.JButton();
+        jCheckBox1 = new javax.swing.JCheckBox();
+        jLabel7 = new javax.swing.JLabel();
+        jCheckBox2 = new javax.swing.JCheckBox();
+        jLabel8 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
+        jTextField2 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -56,10 +59,10 @@ public class NominaView extends javax.swing.JFrame {
 
         jLabel3.setText("Direccion:");
 
-        TipocañaText.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Quemada ordinaria", "Quemada festiva", "Cruda ordinaria", "Cruda festivo" }));
-        TipocañaText.addActionListener(new java.awt.event.ActionListener() {
+        Tipocañabox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Quemada ordinaria", "Quemada festiva", "Cruda ordinaria", "Cruda festivo" }));
+        Tipocañabox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TipocañaTextActionPerformed(evt);
+                TipocañaboxActionPerformed(evt);
             }
         });
 
@@ -78,12 +81,17 @@ public class NominaView extends javax.swing.JFrame {
         DiastrabajadosText.setEditable(false);
         DiastrabajadosText.setText("15");
 
-        jTextArea1.setEditable(false);
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        Campodedatos.setEditable(false);
+        Campodedatos.setColumns(20);
+        Campodedatos.setRows(5);
+        jScrollPane1.setViewportView(Campodedatos);
 
         procesarbtn.setText("Procesar");
+        procesarbtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                procesarbtnActionPerformed(evt);
+            }
+        });
 
         limpiarbtn.setText("Limpiar");
 
@@ -101,6 +109,29 @@ public class NominaView extends javax.swing.JFrame {
             }
         });
 
+        jCheckBox1.setText("Si");
+
+        jLabel7.setText("Prestamo: ");
+
+        jCheckBox2.setText("No");
+        jCheckBox2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox2ActionPerformed(evt);
+            }
+        });
+
+        jLabel8.setText("Salario minimo:");
+
+        jTextField1.setEditable(false);
+        jTextField1.setText("1´500,000.00");
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
+
+        jLabel9.setText("Cedula: ");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -109,7 +140,14 @@ public class NominaView extends javax.swing.JFrame {
                 .addGap(55, 55, 55)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 392, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 392, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(99, 99, 99)
+                                .addComponent(jCheckBox1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jCheckBox2))
+                            .addComponent(jLabel7))
                         .addGap(29, 29, 29)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(procesarbtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -120,14 +158,20 @@ public class NominaView extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
                             .addComponent(jLabel2)
-                            .addComponent(jLabel3))
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel9))
                         .addGap(38, 38, 38)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(Apellidostext)
-                            .addComponent(DireccionText, javax.swing.GroupLayout.DEFAULT_SIZE, 139, Short.MAX_VALUE)
-                            .addComponent(nombrestext))
+                            .addComponent(DireccionText)
+                            .addComponent(nombrestext)
+                            .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 139, Short.MAX_VALUE))
                         .addGap(36, 36, 36)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel8)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel6)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -138,7 +182,7 @@ public class NominaView extends javax.swing.JFrame {
                                     .addComponent(jLabel4))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(TipocañaText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(Tipocañabox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(FechacorteText, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                 .addContainerGap(59, Short.MAX_VALUE))
         );
@@ -150,7 +194,7 @@ public class NominaView extends javax.swing.JFrame {
                     .addComponent(jLabel1)
                     .addComponent(nombrestext, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4)
-                    .addComponent(TipocañaText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(Tipocañabox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
@@ -165,9 +209,6 @@ public class NominaView extends javax.swing.JFrame {
                     .addComponent(DiastrabajadosText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 326, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(63, 63, 63)
                         .addComponent(procesarbtn)
                         .addGap(18, 18, 18)
@@ -175,8 +216,23 @@ public class NominaView extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(volverbtn)
                         .addGap(26, 26, 26)
-                        .addComponent(salirbtn)))
-                .addContainerGap(32, Short.MAX_VALUE))
+                        .addComponent(salirbtn))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel8)
+                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel9))
+                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(3, 3, 3)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jCheckBox1)
+                            .addComponent(jLabel7)
+                            .addComponent(jCheckBox2))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(38, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -193,9 +249,9 @@ public class NominaView extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void TipocañaTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TipocañaTextActionPerformed
+    private void TipocañaboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TipocañaboxActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_TipocañaTextActionPerformed
+    }//GEN-LAST:event_TipocañaboxActionPerformed
 
     private void FechacorteTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FechacorteTextActionPerformed
         // TODO add your handling code here:
@@ -210,6 +266,18 @@ public class NominaView extends javax.swing.JFrame {
         empleado.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_volverbtnActionPerformed
+
+    private void jCheckBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCheckBox2ActionPerformed
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
+
+    private void procesarbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_procesarbtnActionPerformed
+        
+    }//GEN-LAST:event_procesarbtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -248,19 +316,26 @@ public class NominaView extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField Apellidostext;
+    private javax.swing.JTextArea Campodedatos;
     private javax.swing.JTextField DiastrabajadosText;
     private javax.swing.JTextField DireccionText;
     private javax.swing.JTextField FechacorteText;
-    private javax.swing.JComboBox<String> TipocañaText;
+    private javax.swing.JComboBox<String> Tipocañabox;
+    private javax.swing.JCheckBox jCheckBox1;
+    private javax.swing.JCheckBox jCheckBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
     private javax.swing.JButton limpiarbtn;
     private javax.swing.JTextField nombrestext;
     private javax.swing.JButton procesarbtn;
