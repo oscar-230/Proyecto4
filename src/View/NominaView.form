@@ -48,26 +48,25 @@
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" alignment="0" attributes="0">
                                           <EmptySpace min="-2" pref="99" max="-2" attributes="0"/>
-                                          <Component id="jCheckBox1" min="-2" max="-2" attributes="0"/>
+                                          <Component id="Si_jCheckBox1" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                          <Component id="jCheckBox2" min="-2" max="-2" attributes="0"/>
+                                          <Component id="No_jCheckBox2" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <Component id="jLabel7" alignment="0" min="-2" max="-2" attributes="0"/>
                                       <Component id="jLabel10" alignment="0" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace min="-2" pref="191" max="-2" attributes="0"/>
                               </Group>
-                              <Group type="102" alignment="1" attributes="0">
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jScrollPane1" min="-2" pref="392" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+                              <Group type="102" attributes="0">
+                                  <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
+                                  <Component id="jScrollPane1" min="-2" pref="415" max="-2" attributes="0"/>
                               </Group>
                           </Group>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="1" max="-2" attributes="0">
                               <Component id="procesarbtn" alignment="1" max="32767" attributes="0"/>
                               <Component id="limpiarbtn" alignment="1" max="32767" attributes="0"/>
                               <Component id="volverbtn" alignment="0" max="32767" attributes="0"/>
-                              <Component id="salirbtn" max="32767" attributes="0"/>
+                              <Component id="salirbtn" min="-2" pref="83" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
@@ -147,9 +146,30 @@
                       <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="DiastrabajadosText" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="63" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTextField1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel9" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Component id="identificacionText" alignment="0" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jLabel10" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="toneladas" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace pref="9" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="Si_jCheckBox1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="No_jCheckBox2" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="jScrollPane1" min="-2" pref="263" max="-2" attributes="0"/>
+                      <Group type="102" attributes="0">
                           <Component id="procesarbtn" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="limpiarbtn" min="-2" max="-2" attributes="0"/>
@@ -157,34 +177,9 @@
                           <Component id="volverbtn" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                           <Component id="salirbtn" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jTextField1" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel9" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <Component id="identificacionText" alignment="0" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jLabel10" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="toneladas" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace pref="9" max="32767" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jCheckBox1" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jCheckBox2" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="jScrollPane1" min="-2" pref="263" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
                       </Group>
                   </Group>
+                  <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -303,7 +298,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="salirbtnActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JCheckBox" name="jCheckBox1">
+        <Component class="javax.swing.JCheckBox" name="Si_jCheckBox1">
           <Properties>
             <Property name="text" type="java.lang.String" value="Si"/>
           </Properties>
@@ -313,12 +308,12 @@
             <Property name="text" type="java.lang.String" value="Prestamo: "/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JCheckBox" name="jCheckBox2">
+        <Component class="javax.swing.JCheckBox" name="No_jCheckBox2">
           <Properties>
             <Property name="text" type="java.lang.String" value="No"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCheckBox2ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="No_jCheckBox2ActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel8">
