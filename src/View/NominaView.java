@@ -1,6 +1,8 @@
 
 package View;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author ASUS
@@ -96,6 +98,11 @@ public class NominaView extends javax.swing.JFrame {
         });
 
         limpiarbtn.setText("Limpiar");
+        limpiarbtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                limpiarbtnActionPerformed(evt);
+            }
+        });
 
         volverbtn.setText("Volver");
         volverbtn.addActionListener(new java.awt.event.ActionListener() {
@@ -305,6 +312,9 @@ public class NominaView extends javax.swing.JFrame {
         String tipoDeCaña = Tipocañabox.getSelectedItem().toString();
         String toneladasText = toneladas.getText();
         int toneladas = Integer.parseInt(toneladasText);
+        
+        
+        
         // Calcular los devengos
         double tarifaPorTonelada = 0.0;
         if (tipoDeCaña.equals("Cruda ordinaria")) {
@@ -325,6 +335,7 @@ public class NominaView extends javax.swing.JFrame {
         double interesCesantias = devengos * 0.01;
         double primas = devengos * 0.0833;
         double vacaciones = devengos * 0.0417;
+        double totalPagar = devengos - totalDeducciones;
 
         // Mostrar los resultados en el TextArea
         Campodedatos.setText("");
@@ -350,8 +361,23 @@ public class NominaView extends javax.swing.JFrame {
         Campodedatos.append("Interés de cesantías: " + interesCesantias + "\n");
         Campodedatos.append("Primas: " + primas + "\n");
         Campodedatos.append("Vacaciones: " + vacaciones + "\n");
+        Campodedatos.append("---------------------- \n");
+        Campodedatos.append("Total a pagar: " + totalPagar + "\n");
 
     }//GEN-LAST:event_procesarbtnActionPerformed
+
+    private void limpiarbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_limpiarbtnActionPerformed
+
+        nombrestext.setText("");
+        Apellidostext.setText("");
+        DireccionText.setText("");
+        identificacionText.setText("");
+        toneladas.setText("");
+        DireccionText.setText("");
+
+        Tipocañabox.setSelectedIndex(0);
+
+    }//GEN-LAST:event_limpiarbtnActionPerformed
 
     /**
      * @param args the command line arguments
