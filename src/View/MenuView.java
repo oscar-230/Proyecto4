@@ -29,7 +29,7 @@ public class MenuView extends javax.swing.JFrame {
 
         jLabel1.setBackground(new java.awt.Color(0, 0, 0));
         jLabel1.setFont(new java.awt.Font("Ink Free", 1, 36)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 153, 153));
+        jLabel1.setForeground(new java.awt.Color(255, 51, 51));
         jLabel1.setText("Los Suareños S.A.S");
 
         registro.setBackground(new java.awt.Color(102, 204, 255));

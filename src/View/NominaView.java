@@ -298,83 +298,97 @@ public class NominaView extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void procesarbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_procesarbtnActionPerformed
-        double totalPrestamo = 0;
-        String nombres = nombrestext.getText();
-        String apellidos = Apellidostext.getText();
-        String direccion = DireccionText.getText();
-        String identificacion = identificacionText.getText();
-        String tipoDeCaña = Tipocañabox.getSelectedItem().toString();
-        String toneladasText = toneladas.getText();
-        int toneladas = Integer.parseInt(toneladasText);
+        try {
+            double totalPrestamo = 0;
+            String nombres = nombrestext.getText();
+            String apellidos = Apellidostext.getText();
+            String direccion = DireccionText.getText();
+            String identificacion = identificacionText.getText();
+            String tipoDeCaña = Tipocañabox.getSelectedItem().toString();
+            String toneladasText = toneladas.getText();
 
-        // Calcular los devengos
-        double tarifaPorTonelada = 0.0;
-        if (tipoDeCaña.equals("Cruda ordinaria")) {
-            tarifaPorTonelada = 2000000.0;
-        } else if (tipoDeCaña.equals("Quemada ordinaria")) {
-            tarifaPorTonelada = 1000000.0;
-        } else if (tipoDeCaña.equals("Quemada festiva")) {
-            tarifaPorTonelada = 2000000.0;
-        } else if (tipoDeCaña.equals("Cruda festiva")) {
-            tarifaPorTonelada = 3000000.0;
-        }
-        double devengos = tarifaPorTonelada * toneladas;
-
-        // Calcular las deducciones
-        double deduccionesAutomaticas = (devengos * 0.04) * 2; // Salud y Fondo de pensión
-        double deduccionesPorValor = 0.0;
-
-        // Verificar si tiene préstamo
-        if (Si_jCheckBox1.isSelected()) {
-            String pagoPrestamoText = JOptionPane.showInputDialog(this, "Ingrese el monto del préstamo a pagar:");
-            if (pagoPrestamoText != null && !pagoPrestamoText.isEmpty()) {
-                try {
-                    double pagoPrestamo = Double.parseDouble(pagoPrestamoText);
-                    deduccionesPorValor = pagoPrestamo;
-                    Campodedatos.append("Deducción por préstamo: " + pagoPrestamo + "\n");
-                    totalPrestamo -= pagoPrestamo;
-                } catch (NumberFormatException e) {
-                    JOptionPane.showMessageDialog(this, "El monto del préstamo ingresado no es válido", "Error", JOptionPane.ERROR_MESSAGE);
-                }
-            } else {
-                JOptionPane.showMessageDialog(this, "Debe ingresar el monto del préstamo", "Error", JOptionPane.ERROR_MESSAGE);
+            if (nombres.isEmpty() || apellidos.isEmpty() || direccion.isEmpty() || identificacion.isEmpty() || tipoDeCaña.isEmpty() || toneladasText.isEmpty()) {
+                throw new Exception("Debe llenar todos los campos");
             }
+
+            int toneladas = Integer.parseInt(toneladasText);
+
+            // Calcular los devengos
+            double tarifaPorTonelada = 0.0;
+            if (tipoDeCaña.equals("Cruda ordinaria")) {
+                tarifaPorTonelada = 2000000.0;
+            } else if (tipoDeCaña.equals("Quemada ordinaria")) {
+                tarifaPorTonelada = 1000000.0;
+            } else if (tipoDeCaña.equals("Quemada festiva")) {
+                tarifaPorTonelada = 2000000.0;
+            } else if (tipoDeCaña.equals("Cruda festiva")) {
+                tarifaPorTonelada = 3000000.0;
+            }
+            double devengos = tarifaPorTonelada * toneladas;
+
+            // Calcular las deducciones
+            double deduccionesAutomaticas = (devengos * 0.04) * 2; // Salud y Fondo de pensión
+            double deduccionesPorValor = 0.0;
+
+            // Verificar si tiene préstamo
+            if (Si_jCheckBox1.isSelected()) {
+                String pagoPrestamoText = JOptionPane.showInputDialog(this, "Ingrese el monto del préstamo a pagar:");
+                if (pagoPrestamoText != null && !pagoPrestamoText.isEmpty()) {
+                    try {
+                        double pagoPrestamo = Double.parseDouble(pagoPrestamoText);
+                        deduccionesPorValor = pagoPrestamo;
+                        Campodedatos.append("Deducción por préstamo: " + pagoPrestamo + "\n");
+                        totalPrestamo -= pagoPrestamo;
+                    } catch (NumberFormatException e) {
+                        JOptionPane.showMessageDialog(this, "El monto del préstamo ingresado no es válido", "Error", JOptionPane.ERROR_MESSAGE);
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(this, "Debe ingresar el monto del préstamo", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+
+            double totalDeducciones = deduccionesAutomaticas + deduccionesPorValor;
+
+            // Calcular las prestaciones sociales
+            double cesantias = devengos * 0.0833;
+            double interesCesantias = devengos * 0.01;
+            double primas = devengos * 0.0833;
+            double vacaciones = devengos * 0.0417;
+            double totalPagar = devengos - totalDeducciones - totalPrestamo;
+
+
+            Campodedatos.append("Información del empleado:\n");
+            Campodedatos.append("Nombres: " + nombres + "\n");
+            Campodedatos.append("Apellidos: " + apellidos + "\n");
+            Campodedatos.append("Dirección: " + direccion + "\n");
+            Campodedatos.append("Identificación: " + identificacion + "\n\n");
+
+            Campodedatos.append("Devengos:\n");
+            Campodedatos.append("Tipo de caña: " + tipoDeCaña + "\n");
+            Campodedatos.append("Tarifa por tonelada: " + tarifaPorTonelada + "\n");
+            Campodedatos.append("Toneladas: " + toneladas + "\n");
+            Campodedatos.append("Total devengos: " + devengos + "\n\n");
+
+            Campodedatos.append("Deducciones:\n");
+            Campodedatos.append("Deducciones automáticas (Salud y Fondo de pensión): " + deduccionesAutomaticas + "\n");
+            Campodedatos.append("Deducciones por préstamo: " + deduccionesPorValor + "\n");
+            Campodedatos.append("Total deducciones: " + totalDeducciones + "\n\n");
+
+            Campodedatos.append("Prestaciones sociales:\n");
+            Campodedatos.append("Cesantías: " + cesantias + "\n");
+            Campodedatos.append("Interés de cesantías: " + interesCesantias + "\n");
+            Campodedatos.append("Primas: " + primas + "\n");
+            Campodedatos.append("Vacaciones: " + vacaciones + "\n");
+            Campodedatos.append("\n");
+            Campodedatos.append("Total a pagar: " + totalPagar + "\n");
+            Campodedatos.append("\n");
+            Campodedatos.append("----------------------------------\n");
+
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Debe ingresar un valor numérico válido para las toneladas", "Error", JOptionPane.ERROR_MESSAGE);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
-
-        double totalDeducciones = deduccionesAutomaticas + deduccionesPorValor;
-
-        // Calcular las prestaciones sociales
-        double cesantias = devengos * 0.0833;
-        double interesCesantias = devengos * 0.01;
-        double primas = devengos * 0.0833;
-        double vacaciones = devengos * 0.0417;
-        double totalPagar = devengos - totalDeducciones - totalPrestamo;
-
-        
-        Campodedatos.append("Información del empleado:\n");
-        Campodedatos.append("Nombres: " + nombres + "\n");
-        Campodedatos.append("Apellidos: " + apellidos + "\n");
-        Campodedatos.append("Dirección: " + direccion + "\n");
-        Campodedatos.append("Identificación: " + identificacion + "\n\n");
-
-        Campodedatos.append("Devengos:\n");
-        Campodedatos.append("Tipo de caña: " + tipoDeCaña + "\n");
-        Campodedatos.append("Tarifa por tonelada: " + tarifaPorTonelada + "\n");
-        Campodedatos.append("Toneladas: " + toneladas + "\n");
-        Campodedatos.append("Total devengos: " + devengos + "\n\n");
-
-        Campodedatos.append("Deducciones:\n");
-        Campodedatos.append("Deducciones automáticas (Salud y Fondo de pensión): " + deduccionesAutomaticas + "\n");
-        Campodedatos.append("Deducciones por préstamo: " + deduccionesPorValor + "\n");
-        Campodedatos.append("Total deducciones: " + totalDeducciones + "\n\n");
-
-        Campodedatos.append("Prestaciones sociales:\n");
-        Campodedatos.append("Cesantías: " + cesantias + "\n");
-        Campodedatos.append("Interés de cesantías: " + interesCesantias + "\n");
-        Campodedatos.append("Primas: " + primas + "\n");
-        Campodedatos.append("Vacaciones: " + vacaciones + "\n");
-        Campodedatos.append("---------------------- \n");
-        Campodedatos.append("Total a pagar: " + totalPagar + "\n");
     }//GEN-LAST:event_procesarbtnActionPerformed
 
     private void limpiarbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_limpiarbtnActionPerformed

@@ -8,6 +8,8 @@
 
 package proyecto4;
 
+import View.MenuView;
+
 
 public class Main {
 
@@ -15,6 +17,8 @@ public class Main {
     public static void main(String[] args) {
         // TODO code application logic here
         System.out.println("se crea el proyecto");
+        MenuView nuevomenu = new MenuView();
+        nuevomenu.setVisible(true);
     }
     
 }
