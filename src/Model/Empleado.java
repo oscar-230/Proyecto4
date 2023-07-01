@@ -54,9 +54,6 @@ public class Empleado {
                 "\nDirección: " + direccion +
                 "\nEPS Código: " + epsCodigo +
                 "\nFPP Código: " + fppCodigo +
-                "\nFecha de Nacimiento: " + fechaNacimiento +
-                "\nFecha de Ingreso: " + fechaIngreso +
-                "\nFecha de Retiro: " + fechaRetiro +
                 "\nTipo de Trabajador: " + tipoTrabajador +
                 "\nTipo de Salario: " + tipoSalario +
                 "\nNúmero de Cuenta Bancaria: " + numeroCuentaBancaria;

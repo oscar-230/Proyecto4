@@ -6,13 +6,15 @@ package View;
 
 import Controller.EmpleadoController;
 import DAO.EmpleadoImplementacionDAO;
+import Exceptions.EmpleadoNotFoundException;
 import Model.Empleado;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 
 public class EmpleadoView extends javax.swing.JFrame {
-
+    
+    private List<Integer> documentosEmpleados = new ArrayList<>();
     private EmpleadoController empleadoController;
 
     public EmpleadoView() {
@@ -45,7 +47,7 @@ public class EmpleadoView extends javax.swing.JFrame {
         datostext = new javax.swing.JTextArea();
         registrar = new javax.swing.JButton();
         actualizar = new javax.swing.JButton();
-        eliminartext = new javax.swing.JButton();
+        eliminar = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         buscartext = new javax.swing.JTextField();
         limpiar = new javax.swing.JButton();
@@ -60,7 +62,6 @@ public class EmpleadoView extends javax.swing.JFrame {
         jLabel11.setText("jLabel11");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setFocusable(false);
         setResizable(false);
 
         jLabel1.setText("Identificacion: ");
@@ -104,10 +105,10 @@ public class EmpleadoView extends javax.swing.JFrame {
             }
         });
 
-        eliminartext.setText("Eliminar");
-        eliminartext.addActionListener(new java.awt.event.ActionListener() {
+        eliminar.setText("Eliminar");
+        eliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                eliminartextActionPerformed(evt);
+                eliminarActionPerformed(evt);
             }
         });
 
@@ -150,7 +151,7 @@ public class EmpleadoView extends javax.swing.JFrame {
                         .addGap(29, 29, 29)
                         .addComponent(actualizar)
                         .addGap(34, 34, 34)
-                        .addComponent(eliminartext)
+                        .addComponent(eliminar)
                         .addGap(18, 18, 18)
                         .addComponent(limpiar))
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -283,7 +284,7 @@ public class EmpleadoView extends javax.swing.JFrame {
                     .addComponent(registrar)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(actualizar)
-                        .addComponent(eliminartext)
+                        .addComponent(eliminar)
                         .addComponent(limpiar)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -309,9 +310,7 @@ public class EmpleadoView extends javax.swing.JFrame {
     private void nombrestextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombrestextActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_nombrestextActionPerformed
-
-    private List<Integer> documentosEmpleados = new ArrayList<>();
-
+  
     private void registrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarActionPerformed
         EmpleadoController empleadoController = new EmpleadoController(new EmpleadoImplementacionDAO());
         empleadoController.setDocumentosEmpleados(documentosEmpleados);
@@ -362,11 +361,49 @@ public class EmpleadoView extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
 
-    private void eliminartextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminartextActionPerformed
+    private void eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarActionPerformed
+        String numeroDocumentoText = JOptionPane.showInputDialog(this, "Ingrese el número de documento del empleado a eliminar:", "Eliminar Empleado", JOptionPane.PLAIN_MESSAGE);
+    
+        if (numeroDocumentoText != null && !numeroDocumentoText.isEmpty()) {
+            try {
+                int numeroDocumento = Integer.parseInt(numeroDocumentoText);
 
+                EmpleadoController empleadoController = new EmpleadoController(new EmpleadoImplementacionDAO());
+                empleadoController.setDocumentosEmpleados(documentosEmpleados);
+
+                try {
+                    empleadoController.eliminarEmpleado(numeroDocumento);
+                    documentosEmpleados.remove(Integer.valueOf(numeroDocumento));
+
+                    eliminarEmpleadoTextArea(numeroDocumento);
+
+                    JOptionPane.showMessageDialog(this, "Empleado eliminado exitosamente.", "Eliminación Exitosa", JOptionPane.INFORMATION_MESSAGE);
+                } catch (EmpleadoNotFoundException e) {
+                    JOptionPane.showMessageDialog(this, "No se encontró ningún empleado con ese número de documento.", "Empleado no encontrado", JOptionPane.WARNING_MESSAGE);
+                }
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(this, "El número de documento debe ser un valor numérico válido.", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        }
         
-    }//GEN-LAST:event_eliminartextActionPerformed
+    }//GEN-LAST:event_eliminarActionPerformed
 
+    private void eliminarEmpleadoTextArea(int numeroDocumento) {
+        String[] empleados = datostext.getText().split("\n-------------------------------\n");
+        StringBuilder nuevoTexto = new StringBuilder();
+
+        for (String empleadoInfo : empleados) {
+            String[] empleadoLineas = empleadoInfo.split("\n");
+            String[] documentoInfo = empleadoLineas[1].split(":");
+            int documento = Integer.parseInt(documentoInfo[1].trim());
+
+            if (documento != numeroDocumento) {
+                nuevoTexto.append(empleadoInfo).append("\n-------------------------------\n");
+            }
+        }
+
+        datostext.setText(nuevoTexto.toString());
+    }
     
     private void limpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_limpiarActionPerformed
         identificaciontext.setText("");
@@ -434,7 +471,7 @@ public class EmpleadoView extends javax.swing.JFrame {
     private javax.swing.JTextField cuentatext;
     private javax.swing.JTextArea datostext;
     private javax.swing.JTextField direcciontext;
-    private javax.swing.JButton eliminartext;
+    private javax.swing.JButton eliminar;
     private javax.swing.JTextField epstext;
     private javax.swing.JTextField fichatext;
     private javax.swing.JTextField fpptext;
