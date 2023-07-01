@@ -19,9 +19,11 @@ public class EmpleadoController {
     
     private List<Integer> documentosEmpleados;
 
-    public EmpleadoController(EmpleadoDAO empleadoDAO) {
+    public EmpleadoController(EmpleadoDAO empleadoDAO, List<Integer> documentosEmpleados) {
         this.empleadoDAO = empleadoDAO;
+        this.documentosEmpleados = documentosEmpleados;
     }
+
 
     public void setDocumentosEmpleados(List<Integer> documentosEmpleados) {
         this.documentosEmpleados = documentosEmpleados;

@@ -1,7 +1,11 @@
 /**
- * @author Oscar David Cuaical
- * @author Grupo: 01 N° Laboratorio: 04 Profesor: Luis Yovany Romo Portilla
+ * @author Oscar David Cuaical 
+ * @author 
+ * Grupo: 01
+ * N° Laboratorio: 04
+ * Profesor: Luis Yovany Romo Portilla
  */
+
 package View;
 
 import Controller.EmpleadoController;
@@ -17,8 +21,9 @@ public class EmpleadoView extends javax.swing.JFrame {
     private List<Integer> documentosEmpleados = new ArrayList<>();
     private EmpleadoController empleadoController;
 
+
     public EmpleadoView() {
-        empleadoController = new EmpleadoController(new EmpleadoImplementacionDAO());
+        empleadoController = new EmpleadoController(new EmpleadoImplementacionDAO(), documentosEmpleados);
         initComponents();
     }
 
@@ -312,7 +317,7 @@ public class EmpleadoView extends javax.swing.JFrame {
     }//GEN-LAST:event_nombrestextActionPerformed
   
     private void registrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarActionPerformed
-        EmpleadoController empleadoController = new EmpleadoController(new EmpleadoImplementacionDAO());
+        EmpleadoController empleadoController = new EmpleadoController(new EmpleadoImplementacionDAO(), documentosEmpleados);
         empleadoController.setDocumentosEmpleados(documentosEmpleados);
 
         String identificacionText = identificaciontext.getText().trim();
@@ -362,33 +367,32 @@ public class EmpleadoView extends javax.swing.JFrame {
 
 
     private void eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarActionPerformed
-        String numeroDocumentoText = JOptionPane.showInputDialog(this, "Ingrese el número de documento del empleado a eliminar:", "Eliminar Empleado", JOptionPane.PLAIN_MESSAGE);
-    
-        if (numeroDocumentoText != null && !numeroDocumentoText.isEmpty()) {
-            try {
-                int numeroDocumento = Integer.parseInt(numeroDocumentoText);
+        System.out.println(documentosEmpleados);
+        // Obtener el número de documento del campo txtNumeroDocumento
+        // Obtener el número de documento del campo txtNumeroDocumento
+        String numeroDocumento = JOptionPane.showInputDialog(null, "Ingrese el número de documento del empleado a eliminar:", "Eliminar empleado", JOptionPane.QUESTION_MESSAGE);
 
-                EmpleadoController empleadoController = new EmpleadoController(new EmpleadoImplementacionDAO());
-                empleadoController.setDocumentosEmpleados(documentosEmpleados);
+        try {
+            int identificacion = Integer.parseInt(numeroDocumento);
 
-                try {
-                    empleadoController.eliminarEmpleado(numeroDocumento);
-                    documentosEmpleados.remove(Integer.valueOf(numeroDocumento));
-
-                    eliminarEmpleadoTextArea(numeroDocumento);
-
-                    JOptionPane.showMessageDialog(this, "Empleado eliminado exitosamente.", "Eliminación Exitosa", JOptionPane.INFORMATION_MESSAGE);
-                } catch (EmpleadoNotFoundException e) {
-                    JOptionPane.showMessageDialog(this, "No se encontró ningún empleado con ese número de documento.", "Empleado no encontrado", JOptionPane.WARNING_MESSAGE);
-                }
-            } catch (NumberFormatException e) {
-                JOptionPane.showMessageDialog(this, "El número de documento debe ser un valor numérico válido.", "Error", JOptionPane.ERROR_MESSAGE);
+            // Verificar si el empleado existe en la lista
+            Empleado empleado = empleadoController.buscarEmpleadoPorIdentificacion(identificacion);
+            if (empleado != null) {
+                empleadoController.eliminarEmpleado(identificacion);
+                JOptionPane.showMessageDialog(null, "Empleado eliminado correctamente.", "Eliminación exitosa", JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(null, "No se encontró ningún empleado con ese número de documento.", "Error", JOptionPane.ERROR_MESSAGE);
             }
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(null, "Por favor, ingrese un número de documento válido.", "Error", JOptionPane.ERROR_MESSAGE);
+        } catch (EmpleadoNotFoundException ex) {
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
         
     }//GEN-LAST:event_eliminarActionPerformed
 
     private void eliminarEmpleadoTextArea(int numeroDocumento) {
+        
         String[] empleados = datostext.getText().split("\n-------------------------------\n");
         StringBuilder nuevoTexto = new StringBuilder();
 

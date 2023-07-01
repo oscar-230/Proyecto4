@@ -10,13 +10,24 @@ package DAO;
 import Exceptions.EmpleadoNotFoundException;
 import Model.Empleado;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import javax.swing.JOptionPane;
 
 public class EmpleadoImplementacionDAO implements EmpleadoDAO {
     private List<Empleado> empleados;
     private List<Integer> documentosEmpleados;
+    private EmpleadoDAO empleadoDAO;
 
+    public EmpleadoImplementacionDAO(EmpleadoDAO empleadoDAO, List<Integer> documentosEmpleados) {
+        this.empleadoDAO = empleadoDAO;
+        this.documentosEmpleados = documentosEmpleados;
+    }
+    
+    public boolean existeEmpleado(int identificacion) {
+        return documentosEmpleados.contains(identificacion);
+    }
+    
     public EmpleadoImplementacionDAO() {
         empleados = new ArrayList<>();
         documentosEmpleados = new ArrayList<>();
@@ -30,14 +41,23 @@ public class EmpleadoImplementacionDAO implements EmpleadoDAO {
 
     @Override
     public void eliminarEmpleado(int identificacion) throws EmpleadoNotFoundException {
-        Empleado empleado = buscarEmpleadoPorIdentificacion(identificacion);
-        if (empleado != null) {
-            empleados.remove(empleado);
-            documentosEmpleados.remove(Integer.valueOf(identificacion));
-        } else {
-            throw new EmpleadoNotFoundException("Empleado no encontrado");
+        boolean empleadoEncontrado = false;
+        Iterator<Empleado> iterator = empleados.iterator();
+        while (iterator.hasNext()) {
+            Empleado empleado = iterator.next();
+            if (empleado.getIdentificacion() == identificacion) {
+                iterator.remove();
+                empleadoEncontrado = true;
+                break;
+            }
+        }
+
+        if (!empleadoEncontrado) {
+            throw new EmpleadoNotFoundException("No se encontró ningún empleado con ese número de documento.");
         }
     }
+
+
 
     @Override
     public List<Empleado> obtenerEmpleados() {
