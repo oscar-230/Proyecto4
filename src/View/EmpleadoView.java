@@ -1,34 +1,25 @@
 /**
- * @author Oscar David Cuaical 
- * @author 
- * Grupo: 01
- * N° Laboratorio: 04
- * Profesor: Luis Yovany Romo Portilla
+ * @author Oscar David Cuaical
+ * @author Grupo: 01 N° Laboratorio: 04 Profesor: Luis Yovany Romo Portilla
  */
-
-
 package View;
 
 import Controller.EmpleadoController;
 import DAO.EmpleadoImplementacionDAO;
-import Exceptions.EmpleadoNotFoundException;
 import Model.Empleado;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 
-
 public class EmpleadoView extends javax.swing.JFrame {
 
     private EmpleadoController empleadoController;
-    
 
     public EmpleadoView() {
         empleadoController = new EmpleadoController(new EmpleadoImplementacionDAO());
         initComponents();
     }
 
-    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -69,6 +60,8 @@ public class EmpleadoView extends javax.swing.JFrame {
         jLabel11.setText("jLabel11");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setFocusable(false);
+        setResizable(false);
 
         jLabel1.setText("Identificacion: ");
 
@@ -316,7 +309,7 @@ public class EmpleadoView extends javax.swing.JFrame {
     private void nombrestextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombrestextActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_nombrestextActionPerformed
-    
+
     private List<Integer> documentosEmpleados = new ArrayList<>();
 
     private void registrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarActionPerformed
@@ -334,7 +327,6 @@ public class EmpleadoView extends javax.swing.JFrame {
         String tipoSalario = salariotext.getText().trim();
         String numeroCuentaBancariaText = cuentatext.getText().trim();
 
-     
         if (identificacionText.isEmpty() || fichaText.isEmpty() || apellidos.isEmpty() || nombres.isEmpty()
                 || direccion.isEmpty() || epsText.isEmpty() || fppText.isEmpty() || tipoTrabajador.isEmpty()
                 || tipoSalario.isEmpty() || numeroCuentaBancariaText.isEmpty()) {
@@ -362,46 +354,20 @@ public class EmpleadoView extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Los campos numéricos deben contener valores válidos.", "Error", JOptionPane.ERROR_MESSAGE);
         }
         System.out.println(documentosEmpleados);
-       
+
     }//GEN-LAST:event_registrarActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
-    
-    private void mostrarEmpleados() {
-        List<Empleado> empleados = empleadoController.obtenerEmpleados();
 
-        // Limpiar el TextArea
-        datostext.setText("");
 
-        // Mostrar los empleados en el TextArea
-        for (Empleado empleado : empleados) {
-            datostext.append(empleado.toString() + "\n");
-        }
-    }
-        
     private void eliminartextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminartextActionPerformed
+
         
-        String identificacionText = JOptionPane.showInputDialog(this, "Ingrese la identificación del empleado a eliminar:");
-        if (identificacionText != null) {
-            try {
-                int identificacion = Integer.parseInt(identificacionText);
-                if (empleadoController != null) {
-                    empleadoController.eliminarEmpleado(identificacion);
-                    // Actualizar el TextArea con la lista actualizada de empleados
-                    mostrarEmpleados();
-                } else {
-                    JOptionPane.showMessageDialog(this, "El controlador de empleados no está inicializado.", "Error", JOptionPane.ERROR_MESSAGE);
-                }
-            } catch (NumberFormatException e) {
-                JOptionPane.showMessageDialog(this, "La identificación debe ser un valor numérico válido.", "Error", JOptionPane.ERROR_MESSAGE);
-            } catch (EmpleadoNotFoundException e) {
-                JOptionPane.showMessageDialog(this, "No se encontró ningún empleado con la identificación proporcionada.", "Empleado no encontrado", JOptionPane.WARNING_MESSAGE);
-            }
-        }  
     }//GEN-LAST:event_eliminartextActionPerformed
 
+    
     private void limpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_limpiarActionPerformed
         identificaciontext.setText("");
         fichatext.setText("");
@@ -414,12 +380,10 @@ public class EmpleadoView extends javax.swing.JFrame {
         salariotext.setText("");
         cuentatext.setText("");
     }//GEN-LAST:event_limpiarActionPerformed
-   
-    
 
 
     private void actualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actualizarActionPerformed
-        
+
     }//GEN-LAST:event_actualizarActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed

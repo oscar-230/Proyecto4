@@ -24,6 +24,8 @@ public class MenuView extends javax.swing.JFrame {
         Cerrar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setFocusable(false);
+        setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 204));
 
