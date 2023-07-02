@@ -7,7 +7,7 @@
  * Profesor: Luis Yovany Romo Portilla
  */
 
-package proyecto4;
+package Principal;
 
 import View.MenuView;
 
