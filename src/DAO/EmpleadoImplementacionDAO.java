@@ -19,11 +19,11 @@ import javax.swing.JOptionPane;
 public class EmpleadoImplementacionDAO implements EmpleadoDAO {
     private List<Empleado> empleados;
     private List<Integer> documentosEmpleados;
-    private EmpleadoDAO empleadoDAO;
+   
 
     public EmpleadoImplementacionDAO(EmpleadoDAO empleadoDAO, List<Integer> documentosEmpleados) {
-        this.empleadoDAO = empleadoDAO;
-        this.documentosEmpleados = documentosEmpleados;
+        empleados = new ArrayList<>();
+        documentosEmpleados = new ArrayList<>();
     }
     
     public boolean existeEmpleado(int identificacion) {

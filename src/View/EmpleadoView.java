@@ -10,6 +10,7 @@
 package View;
 
 import Controller.EmpleadoController;
+import DAO.EmpleadoDAO;
 import DAO.EmpleadoImplementacionDAO;
 import Exceptions.EmpleadoNotFoundException;
 import Model.Empleado;
@@ -363,7 +364,7 @@ public class EmpleadoView extends javax.swing.JFrame {
     }//GEN-LAST:event_registrarActionPerformed
 
     private void buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_buscarActionPerformed
 
 
@@ -392,23 +393,6 @@ public class EmpleadoView extends javax.swing.JFrame {
         
     }//GEN-LAST:event_eliminarActionPerformed
 
-    private void eliminarEmpleadoTextArea(int numeroDocumento) {
-        
-        String[] empleados = datostext.getText().split("\n-------------------------------\n");
-        StringBuilder nuevoTexto = new StringBuilder();
-
-        for (String empleadoInfo : empleados) {
-            String[] empleadoLineas = empleadoInfo.split("\n");
-            String[] documentoInfo = empleadoLineas[1].split(":");
-            int documento = Integer.parseInt(documentoInfo[1].trim());
-
-            if (documento != numeroDocumento) {
-                nuevoTexto.append(empleadoInfo).append("\n-------------------------------\n");
-            }
-        }
-
-        datostext.setText(nuevoTexto.toString());
-    }
     
     private void limpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_limpiarActionPerformed
         identificaciontext.setText("");
