@@ -1,6 +1,7 @@
 /**
  * @author Oscar David Cuaical 
- * @author 
+ * @author Espinosa Ossa Diego Armando
+ * @author Pitto Calambas Johan David
  * Grupo: 01
  * N° Laboratorio: 04
  * Profesor: Luis Yovany Romo Portilla
@@ -53,7 +54,7 @@ public class EmpleadoView extends javax.swing.JFrame {
         registrar = new javax.swing.JButton();
         actualizar = new javax.swing.JButton();
         eliminar = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        buscar = new javax.swing.JButton();
         buscartext = new javax.swing.JTextField();
         limpiar = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
@@ -117,10 +118,10 @@ public class EmpleadoView extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("Buscar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        buscar.setText("Buscar");
+        buscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                buscarActionPerformed(evt);
             }
         });
 
@@ -172,7 +173,7 @@ public class EmpleadoView extends javax.swing.JFrame {
                                         .addGap(18, 18, 18)
                                         .addComponent(salariotext))
                                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jButton1)
+                                        .addComponent(buscar)
                                         .addGap(18, 18, 18)
                                         .addComponent(buscartext))
                                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
@@ -279,7 +280,7 @@ public class EmpleadoView extends javax.swing.JFrame {
                             .addComponent(jLabel12))
                         .addGap(19, 19, 19)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton1)
+                            .addComponent(buscar)
                             .addComponent(buscartext, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(8, 8, 8)
@@ -361,9 +362,9 @@ public class EmpleadoView extends javax.swing.JFrame {
 
     }//GEN-LAST:event_registrarActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_buscarActionPerformed
 
 
     private void eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarActionPerformed
@@ -471,6 +472,7 @@ public class EmpleadoView extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton actualizar;
     private javax.swing.JTextField apellidostext;
+    private javax.swing.JButton buscar;
     private javax.swing.JTextField buscartext;
     private javax.swing.JTextField cuentatext;
     private javax.swing.JTextArea datostext;
@@ -480,7 +482,6 @@ public class EmpleadoView extends javax.swing.JFrame {
     private javax.swing.JTextField fichatext;
     private javax.swing.JTextField fpptext;
     private javax.swing.JTextField identificaciontext;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
